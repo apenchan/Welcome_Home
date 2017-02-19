@@ -26,6 +26,14 @@ app.use(cookieParser());
 var db = process.env.MONGODB_URI || "mongodb://localhost/im_coming_home";
 mongoose.connect(db);
 
+//Controllers
+// var usersController = require('./controllers/users.js');
+// app.use('/users', usersController);
+
+var seedsController = require('./controllers/seeds.js');
+app.use('/seeds', seedsController);
+
+
 //Listen
 app.listen(port);
 console.log('===========================');
