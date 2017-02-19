@@ -23,7 +23,6 @@ UserSchema.methods.authenticate = function(passwordTry) {
   return bcrypt.compareSync(passwordTry, this.password);
 };
 
-
 var User = mongoose.model('User', UserSchema);
 
 module.exports = User;
