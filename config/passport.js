@@ -1,0 +1,49 @@
+var User = require('../models/users.js');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var JwtStrategy = require('passport-jwt').Strategy;
+var ExtractJwt = require('passport-jwt').ExtractJwt;
+var JwtOpts = {};
+
+var util = require('util');
+JwtOpts.jwtFromRequest = function(req){
+  var token = null
+  if(req && req.cookies){
+    token = req.cookies['jwt_token'];
+  }
+  return token;
+};
+
+JwtOpts.secretOrKet = process.env.JWT_SECRET;
+
+passport.use(new JwtStrategy(JwtOpts, function(jwt_payload, done){
+  console.log(util.inspect(jwt_payload));
+
+  User.findOne({username: jwt_payload._doc.username},function(err,user){
+
+    if (err){
+      return done(err, false)
+    }
+    if (user){
+      console.log(user.username)
+      done(null, user);
+    }
+  });
+}));
+
+passport.use(new LocalStrategy(
+  function(username, password, err){
+    User.findOne({username:username}, function(err, dbUser){
+      if (err) {
+        console.log("error happening");
+        return done(err)
+        }
+        if (!dbUser.authenticate(password)){
+          return done(null, false)
+        }
+          return done(null, dbUser);
+      });
+    })
+  );
+
+module.exports = passport;
