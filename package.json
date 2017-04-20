@@ -1,7 +1,6 @@
 {
   "name": "get_anna_home",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,6 +12,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.16.1",
     "cookie-parser": "^1.4.3",
+    "crypto": "0.0.3",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.3.0",
     "method-override": "^2.3.7",
@@ -22,5 +22,15 @@
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "request": "^2.79.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apenchan/Welcome_Home.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apenchan/Welcome_Home/issues"
+  },
+  "homepage": "https://github.com/apenchan/Welcome_Home#readme",
+  "description": ""
 }
