@@ -26,3 +26,4 @@ router.post('/', passport.authenticate('local', {session: false}), function (req
 });
 
 module.exports = router;
+

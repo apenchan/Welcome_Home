@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
 var airlineSchema = require('./airlines.js').schema;
+var friendSchema = require('./friends.js').schema;
 
 var UserSchema = new mongoose.Schema({
   firstName: {type: String, require:true},
@@ -9,7 +10,8 @@ var UserSchema = new mongoose.Schema({
   username: {type: String, require:true},
   password: {type: String, require:true},
   email: {type: String, require:true},
-  savedAirlines: [airlineSchema]
+  savedAirlines: [airlineSchema],
+  savedFriends: [friendSchema]
 });
 
 UserSchema.pre('save', function(next) {

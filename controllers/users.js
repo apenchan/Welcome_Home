@@ -19,4 +19,7 @@ router.post('/register', function (req, res){
   });
 });
 
+//Route w/ JWT token
+router.use(passport.authenticate('jwt', { session: false }));
+
 module.exports = router;

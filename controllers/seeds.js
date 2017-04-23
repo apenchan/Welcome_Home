@@ -23,10 +23,17 @@ router.get('/', function(req, res){
     airline_name: "Delta"
   });
 
+  var friend1 = new Friend ({
+    friend_first_name: "Brandon",
+    friend_last_name: "Schuster"
+  });
+
   user1.save();
   airline1.save();
+  friend1.save();
   user1.savedAirlines.push(airline1);
   user1.save();
+  user1.savedFriends.push(friend1);
 
   console.log("==============");
   console.log("seed that db baby");
